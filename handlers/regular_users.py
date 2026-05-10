@@ -15,6 +15,15 @@ from keyboards.reply_keyboards import get_keyboard
 
 from dotenv import load_dotenv
 
+from services.ai_assistant import get_ai_response
+
+from services.pump_calculator import (
+    calculate_irrigation_flow,
+    calculate_pump_requirement,
+    convert_area_to_m2,
+    normalize_number,
+)
+
 load_dotenv()
 
 regular_users_router = Router()
@@ -51,138 +60,302 @@ async def start_after_callback(callback: CallbackQuery, state: FSMContext):
 ##################################################### КАЛЬКУЛЯТОР ######################################################
 ########################################################################################################################
 class PumpCal(StatesGroup):
-    area = None
-    area_ones = None
-    length = None
-    emitter_step = None
-
     enter_area = State()
     enter_area_ones = State()
 
-    enter_length = State()
-    enter_emitter_step = State()
+    enter_row_spacing = State()
+    enter_emitter_spacing = State()
     enter_emitter_flow = State()
+
+    enter_pipe_diameter = State()
+    enter_pipe_length = State()
+    enter_height_difference = State()
 
     final = State()
 
-
-async def update_area(area: str, unit: str):
-    if unit == 'm2':
-        return int(area)
-    elif unit == 'hundreds':
-        return int(area) * 100
-    elif unit == 'ga':
-        return float(area) * 10_000
-
-
 @regular_users_router.message(F.text == 'Розрахунок системи поливу')
 async def pump_cal_start(message: Message, state: FSMContext):
-    await message.answer('Введіть площу поля (м2, сотки, га): ', reply_markup=types.ReplyKeyboardRemove())
+    await message.answer(
+        'Введіть площу поля:\n\n'
+        'Наприклад: 5000, 50 або 1.5',
+        reply_markup=types.ReplyKeyboardRemove()
+    )
     await state.set_state(PumpCal.enter_area)
 
 
 @regular_users_router.message(F.text, StateFilter(PumpCal.enter_area))
 async def pump_cal_area(message: Message, state: FSMContext):
     try:
-        area = float(message.text)
-        await state.update_data(area=area)
-    except Exception as e:
-        await message.answer('Неправильний тип даних!\n'
-                             'Введіть площу поля (м2, сотки, га):')
+        area = normalize_number(message.text)
+        if area <= 0:
+            raise ValueError
+    except Exception:
+        await message.answer(
+            'Неправильний тип даних.\n'
+            'Введіть площу числом. Наприклад: 5000 або 1.5'
+        )
         return
 
-    await message.answer('Оберіть одиниці: ', reply_markup=get_callback_button(
-        btns={'м2': 'm2', 'сотки': 'hundreds', 'га': 'ga'}, sizes=(3,)
-    ))
+    await state.update_data(area=area)
+
+    await message.answer(
+        'Оберіть одиниці площі:',
+        reply_markup=get_callback_button(
+            btns={
+                'м²': 'm2',
+                'сотки': 'hundreds',
+                'га': 'ga',
+            },
+            sizes=(3,)
+        )
+    )
     await state.set_state(PumpCal.enter_area_ones)
 
 
-@regular_users_router.callback_query(F.data.in_(['m2', 'hundreds', 'ga']), StateFilter(PumpCal.enter_area_ones))
+@regular_users_router.callback_query(
+    F.data.in_(['m2', 'hundreds', 'ga']),
+    StateFilter(PumpCal.enter_area_ones)
+)
 async def pump_cal_area_ones(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
-    area_ones = callback.data
+
     data = await state.get_data()
     area = data['area']
+    area_unit = callback.data
 
-    proper_area = await update_area(area=area, unit=area_ones)
-    await state.update_data(area=proper_area)
+    area_m2 = convert_area_to_m2(area, area_unit)
+    await state.update_data(area_m2=area_m2)
 
-    await callback.message.answer('Введіть відстань між рядками (в м.):\n')
-    await state.set_state(PumpCal.enter_length)
+    await callback.message.answer(
+        'Введіть відстань між рядками в метрах:\n\n'
+        'Наприклад: 0.7'
+    )
+    await state.set_state(PumpCal.enter_row_spacing)
 
 
 @regular_users_router.message(StateFilter(PumpCal.enter_area_ones))
 async def pump_cal_area_ones_problem(message: Message, state: FSMContext):
-    await message.answer('Виберіть правильні одиниці: ', get_callback_button(
-        btns={'м2': 'm2', 'сотки': 'hundreds', 'га': 'ga'}, sizes=(3,)
-    ))
+    await message.answer(
+        'Оберіть одиниці через кнопки:',
+        reply_markup=get_callback_button(
+            btns={
+                'м²': 'm2',
+                'сотки': 'hundreds',
+                'га': 'ga',
+            },
+            sizes=(3,)
+        )
+    )
 
 
-@regular_users_router.message(F.text, StateFilter(PumpCal.enter_length))
-async def pump_cal_area_ones(message: Message, state: FSMContext):
+@regular_users_router.message(F.text, StateFilter(PumpCal.enter_row_spacing))
+async def pump_cal_row_spacing(message: Message, state: FSMContext):
     try:
-        length = float(message.text)
-    except Exception as e:
-        await message.answer('Неправильний тип даних!\n'
-                             'Введіть відстань між рядками (в м.):\n')
+        row_spacing = normalize_number(message.text)
+        if row_spacing <= 0:
+            raise ValueError
+    except Exception:
+        await message.answer(
+            'Неправильний тип даних.\n'
+            'Введіть відстань між рядками в метрах. Наприклад: 0.7'
+        )
         return
 
-    await state.update_data(length=length)
+    await state.update_data(row_spacing=row_spacing)
 
-    await message.answer('Введіть відстань кроку емітера (в м.):\n')
-    await state.set_state(PumpCal.enter_emitter_step)
+    await message.answer(
+        'Введіть крок емітера в метрах:\n\n'
+        'Наприклад:\n'
+        '0.1 — 10 см\n'
+        '0.2 — 20 см\n'
+        '0.3 — 30 см'
+    )
+    await state.set_state(PumpCal.enter_emitter_spacing)
 
 
-@regular_users_router.message(F.text, StateFilter(PumpCal.enter_emitter_step))
-async def pump_cal_length(message: Message, state: FSMContext):
+@regular_users_router.message(F.text, StateFilter(PumpCal.enter_emitter_spacing))
+async def pump_cal_emitter_spacing(message: Message, state: FSMContext):
     try:
-        emitter_step = float(message.text)
-    except Exception as e:
-        await message.answer('Неправильний тип даних!\n'
-                             'Введіть відстань кроку емітера (в м.):\n')
+        emitter_spacing = normalize_number(message.text)
+        if emitter_spacing <= 0:
+            raise ValueError
+    except Exception:
+        await message.answer(
+            'Неправильний тип даних.\n'
+            'Введіть крок емітера в метрах. Наприклад: 0.3'
+        )
         return
 
-    await state.update_data(emitter_step=emitter_step)
+    await state.update_data(emitter_spacing=emitter_spacing)
 
-    await message.answer('Введіть викид води одного емітера (в л/год):\n')
+    await message.answer(
+        'Введіть витрату одного емітера в л/год:\n\n'
+        'Наприклад: 1.1 або 1.4'
+    )
     await state.set_state(PumpCal.enter_emitter_flow)
 
 
 @regular_users_router.message(F.text, StateFilter(PumpCal.enter_emitter_flow))
-async def pump_cal_emitter_step(message: Message, state: FSMContext):
+async def pump_cal_emitter_flow(message: Message, state: FSMContext):
     try:
-        emitter_flow = float(message.text)
+        emitter_flow = normalize_number(message.text)
+        if emitter_flow <= 0:
+            raise ValueError
+
         data = await state.get_data()
 
-        area = data['area']
-        length = data['length']
-        emitter_step = data['emitter_step']
+        irrigation_result = calculate_irrigation_flow(
+            area_m2=data['area_m2'],
+            row_spacing_m=data['row_spacing'],
+            emitter_spacing_m=data['emitter_spacing'],
+            emitter_flow_l_h=emitter_flow,
+        )
 
-        total_length = area / length
-        total_emitters = total_length / emitter_step
-        total_water_flow = total_emitters * emitter_flow
-        total_water_flow_m3 = total_water_flow / 1000
+    except Exception:
+        await message.answer(
+            'Неправильний тип даних.\n'
+            'Введіть витрату одного емітера в л/год. Наприклад: 1.4'
+        )
+        return
 
-        await message.answer(f'<b>Результати розрахунку</b>:\n\n'
-                             f'Довжина крапельної стрічки: <b>{total_length:.2f}</b> м.\n'
-                             f'Кількість емітерів: <b>{total_emitters:.0f}</b>\n'
-                             f'Загальна витрата води: <b>{total_water_flow_m3:.2f}</b> м³/ч\n\n'
-                             f'Контакт менеджера: <b>{os.getenv("MANAGER_PHONE")}</b>\n'
-                             f"Якщо ви бажаєте підібрати насос на основі цих критеріїв, зв'яжіться з нашим менеджером.",
-                             reply_markup=get_callback_button(btns={'На головну': 'main_regular_user'}))
-        await state.set_state(PumpCal.final)
-    except Exception as e:
-        await message.answer('Неправильний тип даних!\n'
-                             'Введіть викид води одного емітера (в л/год):\n')
+    await state.update_data(
+        emitter_flow=emitter_flow,
+        total_tape_length_m=irrigation_result.total_tape_length_m,
+        total_emitters=irrigation_result.total_emitters,
+        required_flow_l_h=irrigation_result.required_flow_l_h,
+        required_flow_m3_h=irrigation_result.required_flow_m3_h,
+    )
+
+    await message.answer(
+        f'<b>Попередній розрахунок продуктивності</b>:\n\n'
+        f'Довжина крапельної стрічки: <b>{irrigation_result.total_tape_length_m:.2f}</b> м\n'
+        f'Кількість емітерів: <b>{irrigation_result.total_emitters:.0f}</b> шт.\n'
+        f'Загальна витрата води: <b>{irrigation_result.required_flow_m3_h:.2f}</b> м³/год\n\n'
+        f'Тепер розрахуємо орієнтовні втрати напору в магістральній трубі.\n'
+        f'Оберіть діаметр труби ПНД:',
+        reply_markup=get_callback_button(
+            btns={
+                'Ø20': 'pipe_20',
+                'Ø25': 'pipe_25',
+                'Ø32': 'pipe_32',
+                'Ø40': 'pipe_40',
+                'Ø50': 'pipe_50',
+                'Ø63': 'pipe_63',
+                'Ø75': 'pipe_75',
+            },
+            sizes=(3, 2, 2)
+        )
+    )
+
+    await state.set_state(PumpCal.enter_pipe_diameter)
 
 
-@regular_users_router.callback_query(F.data == 'main', StateFilter('*'))
-async def pump_cal_final(callback: CallbackQuery, state: FSMContext, bot: Bot):
+@regular_users_router.callback_query(
+    F.data.in_(['pipe_20', 'pipe_25', 'pipe_32', 'pipe_40', 'pipe_50', 'pipe_63', 'pipe_75']),
+    StateFilter(PumpCal.enter_pipe_diameter)
+)
+async def pump_cal_pipe_diameter(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
-    if callback.data == 'main':
-        await callback.message.answer('Вітаємо у боті <b>TechBaza</b>!',
-                                      reply_markup=START_BUTTONS)
-    await state.clear()
+
+    pipe_diameter = int(callback.data.replace('pipe_', ''))
+    await state.update_data(pipe_diameter=pipe_diameter)
+
+    await callback.message.answer(
+        'Введіть довжину магістральної труби від насоса до ділянки, м:\n\n'
+        'Наприклад: 100 або 250'
+    )
+    await state.set_state(PumpCal.enter_pipe_length)
+
+
+@regular_users_router.message(F.text, StateFilter(PumpCal.enter_pipe_length))
+async def pump_cal_pipe_length(message: Message, state: FSMContext):
+    try:
+        pipe_length = normalize_number(message.text)
+        if pipe_length < 0:
+            raise ValueError
+    except Exception:
+        await message.answer(
+            'Неправильний тип даних.\n'
+            'Введіть довжину магістралі в метрах. Наприклад: 100'
+        )
+        return
+
+    await state.update_data(pipe_length=pipe_length)
+
+    await message.answer(
+        'Введіть перепад висоти в метрах:\n\n'
+        '0 — якщо насос і поле приблизно на одному рівні\n'
+        '5 — якщо поле вище насоса на 5 метрів\n'
+        '-3 — якщо поле нижче насоса на 3 метри'
+    )
+    await state.set_state(PumpCal.enter_height_difference)
+
+
+@regular_users_router.message(F.text, StateFilter(PumpCal.enter_height_difference))
+async def pump_cal_final_result(message: Message, state: FSMContext):
+    try:
+        height_difference = normalize_number(message.text)
+        data = await state.get_data()
+
+        pump_requirement = calculate_pump_requirement(
+            flow_m3_h=data['required_flow_m3_h'],
+            pipe_diameter_mm=data['pipe_diameter'],
+            pipe_length_m=data['pipe_length'],
+            height_difference_m=height_difference,
+        )
+
+    except ValueError as error:
+        await message.answer(
+            f'{error}\n\n'
+            f'Спробуйте повернутися до розрахунку та обрати більший діаметр труби.',
+            reply_markup=get_callback_button(btns={'На головну': 'main_regular_user'})
+        )
+        await state.set_state(PumpCal.final)
+        return
+
+    except Exception:
+        await message.answer(
+            'Неправильний тип даних.\n'
+            'Введіть перепад висоти в метрах. Наприклад: 0 або 5'
+        )
+        return
+
+    await message.answer(
+        f'<b>Результати розрахунку системи поливу</b>:\n\n'
+
+        f'<b>1. Продуктивність</b>\n'
+        f'Довжина крапельної стрічки: <b>{data["total_tape_length_m"]:.2f}</b> м\n'
+        f'Кількість емітерів: <b>{data["total_emitters"]:.0f}</b> шт.\n'
+        f'Загальна витрата води: <b>{data["required_flow_m3_h"]:.2f}</b> м³/год\n\n'
+
+        f'<b>2. Втрати напору</b>\n'
+        f'Діаметр магістралі: <b>Ø{data["pipe_diameter"]}</b>\n'
+        f'Довжина магістралі: <b>{data["pipe_length"]:.0f}</b> м\n'
+        f'Найближча витрата з таблиці: <b>{pump_requirement.nearest_table_flow_m3_h:.1f}</b> м³/год\n'
+        f'Втрати в трубі: <b>{pump_requirement.pipe_loss_bar_per_100m:.2f}</b> бар / 100 м\n'
+        f'Загальні втрати в трубі: <b>{pump_requirement.total_pipe_loss_bar:.2f}</b> бар\n'
+        f'Перепад висоти: <b>{height_difference:.1f}</b> м = '
+        f'<b>{pump_requirement.height_loss_bar:.2f}</b> бар\n'
+        f'Орієнтовні втрати на фільтрі та фітингах: '
+        f'<b>{pump_requirement.filter_and_fittings_loss_bar:.2f}</b> бар\n'
+        f'Потрібний тиск на крапельній стрічці: '
+        f'<b>{pump_requirement.drip_tape_pressure_bar:.2f}</b> бар\n\n'
+
+        f'<b>3. Орієнтовна вимога до насоса</b>\n'
+        f'Продуктивність: <b>{data["required_flow_m3_h"]:.2f}</b> м³/год\n'
+        f'Напір із запасом: <b>{pump_requirement.required_head_m:.0f}</b> м\n'
+        f'Тиск із запасом: <b>{pump_requirement.required_pressure_with_reserve_bar:.2f}</b> бар\n\n'
+
+        f'Тобто насос потрібно підбирати так, щоб він міг дати приблизно '
+        f'<b>{data["required_flow_m3_h"]:.2f} м³/год при {pump_requirement.required_head_m:.0f} м напору</b>.\n\n'
+
+        f'Контакт менеджера: <b>{os.getenv("MANAGER_PHONE")}</b>\n'
+        f'Для точного підбору потрібно ще врахувати джерело води, фільтр, кількість зон поливу '
+        f'та реальну схему труб.',
+        reply_markup=get_callback_button(btns={'На головну': 'main_regular_user'})
+    )
+
+    await state.set_state(PumpCal.final)
 
 
 ########################################################################################################################
@@ -345,11 +518,11 @@ async def main_process(callback: CallbackQuery, state: FSMContext):
         ))
         await state.set_state(Info.company_info)
     if callback.data == 'bot_buttons' or callback.data == 'back_bot':
-        bot_buttons = {'OptPrice': 'button_optprice',
-                       'PumpCal': 'button_pumpcal',
-                       'Feedback': 'button_feedback',
-                       'Моя страховка': 'button_insurance',
-                       'Питання до AI': 'button_ai',
+        bot_buttons = {'Індивідуальні оптові ціни': 'button_optprice',
+                       'Розрахунок системи поливу': 'button_pumpcal',
+                       'Зворотний звязок': 'button_feedback',
+                       'Моє страхування': 'button_insurance',
+                       'Інтелектуальний помічник': 'button_ai',
                        '🏠 В меню': 'main_regular_user'}
         await callback.message.answer('👇 Оберіть, що вас цікавить: ', reply_markup=get_callback_button(
             btns=bot_buttons, sizes=(1, )
@@ -507,7 +680,6 @@ async def bot_info_buttons(callback: CallbackQuery, state: FSMContext):
     if callback.data == 'button_feedback':
         await callback.message.answer('''Feedback --> Зворотний зв’язок\n
 Кнопка «Зворотний зв’язок» дає змогу швидко надіслати своє повідомлення потрібній людині:\n
-•Власнику (з питань функціонування бізнесу),
 •Керівнику (з питань співпраці),
 •Менеджеру (з інших питань),
 •Адміністратору бота (з технічних питань роботи бота).\n
@@ -816,7 +988,6 @@ async def choose_car_for_full_info(callback: CallbackQuery, state: FSMContext):
 ########################################################################################################################
 class AIMessage(StatesGroup):
     start_conversation = State()
-
     handling_callbacks = State()
 
 
@@ -828,40 +999,38 @@ async def start_ai_conversation(message: Message, state: FSMContext):
 
 @regular_users_router.message(F.text, StateFilter(AIMessage.start_conversation))
 async def response(message: Message, state: FSMContext):
-    user_id = message.from_user.id
     user_message = message.text.strip()
 
-    if len(user_message) > 300:
-        await message.answer(f"⚠️ Ваш запит трохи завеликий! Максимум 300 символів 😉")
+    if len(user_message) > 1500:
+        await message.answer("⚠️ Ваш запит трохи завеликий! Максимум 1500 символів 😉")
         return
 
     await message.answer("🔍 Обробляю інформацію...")
 
     try:
-        client = openai.AsyncOpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+        ai_response = await get_ai_response(user_message)
 
-        response = await client.chat.completions.create(
-            model="ft:gpt-4o-mini-2024-07-18:techbaza:techbaza:B0GXUrSi",
-            messages=[
-                {"role": "system",
-                 "content": "Ви – розумний помічник магазину TechBaza, допомагаєте клієнтам знаходити потрібні товари."},
-                {"role": "user", "content": user_message}
-            ],
-            max_tokens=700
+        await message.answer(
+            ai_response,
+            reply_markup=get_callback_button(btns={'Завершити': 'end_conversation'})
         )
-        ai_response = response.choices[0].message.content
-        await message.answer(ai_response, reply_markup=get_callback_button(btns={'Завершити': 'end_conversation'}))
+
         await state.set_state(AIMessage.start_conversation)
+
     except Exception as e:
+        print(f"AI error: {e}")
+
         await message.answer(
             "⚠️ Вибачте, сталася технічна проблема. Спробуйте ще раз трохи пізніше або зверніться до підтримки TechBaza. 🛠",
-            reply_markup=START_BUTTONS)
+            reply_markup=START_BUTTONS
+        )
         await state.clear()
 
 
 @regular_users_router.callback_query(F.data == 'end_conversation', StateFilter(AIMessage.start_conversation))
 async def handling_callbacks(callback: CallbackQuery, state: FSMContext):
     await callback.answer()
+
     if callback.data == 'end_conversation':
         await callback.message.answer('😊 Радий був допомогти!', reply_markup=START_BUTTONS)
         await state.clear()

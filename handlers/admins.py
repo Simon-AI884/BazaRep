@@ -408,8 +408,8 @@ async def get_table_name(item_type):
 
 async def get_discount(item_type, category):
     discounts = {
-        'pump': '0.33|0.3|0.27',
-        'plumbing': '0.42|0.4|0.38',
+        'pump': '0.39|0.2|0.87',
+        'plumbing': '0.45|0.8|0.12',
         'garden_inventory': {
             'watery_spraying': '0.33|0.3|0.27',
             'tree_care': '0.33|0.3|0.27',

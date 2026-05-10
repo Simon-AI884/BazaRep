@@ -1,0 +1,920 @@
+[
+{
+  "article": "775228",
+  "model": "ACm150L",
+  "full_name": "Насос відцентровий 1.5 кВт Hmax 37.5 м Qmax 250 л/хв LEO ACm150L",
+  "brand": "LEO",
+
+  "main_category": "surface_pump",
+  "main_category_name": "Поверхневий насос",
+
+  "sub_category": "centrifugal",
+  "sub_category_name": "Відцентровий",
+
+  "installation_type": "surface",
+  "installation_type_name": "Поверхневий",
+
+  "source_types": ["well", "tank", "cistern", "pond"],
+  "source_type_names": ["колодязь", "ємність", "цистерна", "водойма"],
+
+  "applications": ["water_supply", "irrigation", "garden", "dacha", "house"],
+  "application_names": ["водопостачання", "полив", "сад/город", "дача", "будинок"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["dirty_water", "sewage", "chemical", "deep_borehole"],
+  "not_for_names": ["брудна вода", "каналізація", "хімічні рідини", "глибока свердловина"],
+
+  "phase": "1 ~ 220-240 В",
+  "power_kw": 1.5,
+  "power_w": 1500,
+  "power_hp": 2.0,
+  "current_a": 10.0,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 15.0,
+  "q_max_l_min": 250,
+  "q_rated_l_min": null,
+
+  "h_max_m": 37.5,
+  "h_rated_m": null,
+
+  "suction_depth_m": 8,
+  "max_submersion_depth_m": null,
+
+  "dn1_inch": "1 1/2",
+  "dn2_inch": "1",
+
+  "max_liquid_temp_c": 60,
+  "max_ambient_temp_c": 40,
+  "max_pressure_bar": 8,
+
+  "shaft_material": "нержавіюча сталь AISI 304",
+  "impeller_material": "нержавіюча сталь AISI 304",
+  "motor_type": "асинхронний, закритого типу, повітряного охолодження, з вбудованою в обмотку термозахистом",
+  "stator_winding": "мідь",
+  "mechanical_seal": "кераміка/графіт",
+  "insulation_class": "F",
+  "protection_class": "IPX4",
+
+  "gross_weight_kg": 19.35,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "тільки для чистої води без абразивовмісних домішок: піску, глини, вапна тощо",
+  "usage": "подача чистої води, побутове водопостачання, полив саду або городу, перекачування води з колодязя, ємності або водойми за умови відповідності висоти всмоктування, напору та продуктивності",
+  "limitations": "не підходить для брудної води, каналізаційних стоків, хімічних рідин та води з піском, глиною, вапном або іншими абразивними домішками; максимальна висота всмоктування до 8 м",
+
+  "warranty_months": 24,
+  "product_url": "https://techbaza.ua/ua/p1279276760-nasos-tsentrobezhnyj-15kvt.html"
+},
+{
+  "article": "775052",
+  "model": "JETS60",
+  "full_name": "Насос відцентровий самовсмоктуючий 1.1 кВт Hmax 48 м Qmax 60 л/хв нерж WETRON JETS60",
+  "brand": "Wetron",
+
+  "main_category": "surface_pump",
+  "main_category_name": "Поверхневий насос",
+
+  "sub_category": "self_priming_centrifugal",
+  "sub_category_name": "Відцентровий самовсмоктуючий",
+
+  "installation_type": "surface",
+  "installation_type_name": "Поверхневий",
+
+  "source_types": ["well", "tank", "cistern", "pipeline"],
+  "source_type_names": ["колодязь", "ємність", "цистерна", "трубопровід"],
+
+  "applications": ["water_supply", "irrigation", "garden", "dacha", "house", "pressure_boosting"],
+  "application_names": ["водопостачання", "полив", "сад/город", "дача", "будинок", "підвищення тиску"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["dirty_water", "sewage", "chemical", "deep_borehole"],
+  "not_for_names": ["брудна вода", "каналізація", "хімічні рідини", "глибока свердловина"],
+
+  "phase": "1 ~ 220-240 В",
+  "power_kw": 1.1,
+  "power_w": 1100,
+  "power_hp": null,
+  "current_a": 4.0,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 3.6,
+  "q_max_l_min": 60,
+  "q_rated_l_min": null,
+
+  "h_max_m": 48,
+  "h_rated_m": null,
+
+  "suction_depth_m": 8,
+  "max_submersion_depth_m": null,
+
+  "dn1_inch": "1",
+  "dn2_inch": "1",
+
+  "max_liquid_temp_c": 40,
+  "max_ambient_temp_c": null,
+  "max_pressure_bar": 8,
+
+  "shaft_material": "нержавіюча сталь AISI 304",
+  "impeller_material": "зносостійкий технополімер",
+  "motor_type": "асинхронний, однофазний",
+  "stator_winding": "холоднокатана сталь / обмотка електродвигуна",
+  "mechanical_seal": null,
+  "insulation_class": null,
+  "protection_class": "IP44",
+
+  "gross_weight_kg": 8.4,
+
+  "solid_particles_max_mm": 0.2,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "чиста вода",
+  "usage": "перекачування чистої води, побутове водопостачання, системи підвищення тиску, допоміжне обладнання, підйом води в трубопроводах високого і низького тиску, зрошувальні системи присадибних ділянок і городів, теплиці та парники, автоматична подача води з невеликими резервуарами при використанні керуючої автоматики",
+  "limitations": "тільки для чистої води; не підходить для брудної води, каналізаційних стоків, хімічних рідин та води з твердими частинками понад 0.2 мм; максимальна висота всмоктування до 8 м; встановлення має проводитися у місцях, захищених від атмосферного впливу і вологи",
+
+  "warranty_months": 12,
+  "product_url": "https://techbaza.ua/ua/p1279277111-nasos-tsentrobezhnyj-samovsasyvayuschij.html"
+},
+  {
+  "article": "775011",
+  "model": "QB60",
+  "full_name": "Насос вихровий QB60 0.37 кВт Hmax 35 м Qmax 35 л/хв WETRON QB60",
+  "brand": "Wetron",
+
+  "main_category": "surface_pump",
+  "main_category_name": "Поверхневий насос",
+
+  "sub_category": "vortex",
+  "sub_category_name": "Вихровий",
+
+  "installation_type": "surface",
+  "installation_type_name": "Поверхневий",
+
+  "source_types": ["well", "tank", "cistern", "pipeline"],
+  "source_type_names": ["колодязь", "ємність", "цистерна", "трубопровід"],
+
+  "applications": ["water_supply", "irrigation", "garden", "dacha", "house", "pressure_boosting"],
+  "application_names": ["водопостачання", "полив", "сад/город", "дача", "будинок", "підвищення тиску"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["dirty_water", "sewage", "chemical", "deep_borehole"],
+  "not_for_names": ["брудна вода", "каналізація", "хімічні рідини", "глибока свердловина"],
+
+  "phase": "1 ~ 220-240 В",
+  "power_kw": 0.37,
+  "power_w": 370,
+  "power_hp": null,
+  "current_a": 1.5,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 2.1,
+  "q_max_l_min": 35,
+  "q_rated_l_min": null,
+
+  "h_max_m": 35,
+  "h_rated_m": null,
+
+  "suction_depth_m": 8,
+  "max_submersion_depth_m": null,
+
+  "dn1_inch": "1",
+  "dn2_inch": "1",
+
+  "max_liquid_temp_c": 40,
+  "max_ambient_temp_c": null,
+  "max_pressure_bar": null,
+
+  "shaft_material": "нержавіюча сталь AISI 304",
+  "impeller_material": "латунь",
+  "motor_type": "однофазний асинхронний",
+  "stator_winding": null,
+  "mechanical_seal": null,
+  "insulation_class": null,
+  "protection_class": "IP44",
+
+  "gross_weight_kg": 4.5,
+
+  "solid_particles_max_mm": 0.2,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "чиста вода",
+  "usage": "перекачування чистої води, побутове водопостачання, системи підвищення тиску, подача води з колодязя або ємності, полив саду чи городу за умови відповідності потрібної подачі та напору",
+  "limitations": "тільки для чистої води; не підходить для брудної води, каналізаційних стоків, хімічних рідин та води з твердими частинками понад 0.2 мм; максимальна висота всмоктування до 8 м",
+
+  "warranty_months": 12,
+  "product_url": "https://techbaza.ua/ua/p1279277103-nasos-vihrevoj-qb60.html"
+},
+{
+  "article": "775338",
+  "model": "LEO 3.0",
+  "full_name": "Насос відцентровий з зовнішнім ежектором 0.75 кВт HSmax 35 м Hmax 50 м Qmax 30 л/хв LEO 3.0",
+  "brand": "LEO",
+
+  "main_category": "surface_pump",
+  "main_category_name": "Поверхневий насос",
+
+  "sub_category": "external_ejector",
+  "sub_category_name": "Відцентровий із зовнішнім ежектором",
+
+  "installation_type": "surface",
+  "installation_type_name": "Поверхневий",
+
+  "source_types": ["well", "borehole", "tank", "cistern"],
+  "source_type_names": ["колодязь", "свердловина", "ємність", "цистерна"],
+
+  "applications": ["water_supply", "irrigation", "garden", "dacha", "house"],
+  "application_names": ["водопостачання", "полив", "сад/город", "дача", "будинок"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["dirty_water", "sewage", "chemical"],
+  "not_for_names": ["брудна вода", "каналізація", "хімічні рідини"],
+
+  "phase": "1 ~ 220 В",
+  "power_kw": 0.75,
+  "power_w": 750,
+  "power_hp": null,
+  "current_a": 5.0,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 1.8,
+  "q_max_l_min": 30,
+  "q_rated_l_min": null,
+
+  "h_max_m": 50,
+  "h_rated_m": null,
+
+  "suction_depth_m": 35,
+  "max_submersion_depth_m": null,
+
+  "dn1_inch": "1 1/4",
+  "dn2_inch": "1",
+
+  "external_ejector": true,
+  "external_ejector_diameter_mm": 96,
+  "external_ejector_size_inch": "4",
+  "well_diameter_max_mm": 1000,
+
+  "max_liquid_temp_c": 40,
+  "max_ambient_temp_c": 40,
+  "max_pressure_bar": 10,
+
+  "shaft_material": "нержавіюча сталь AISI 304",
+  "impeller_material": "нержавіюча сталь AISI 304",
+  "motor_type": "асинхронний, закритого типу, повітряного охолодження, з вбудованою в обмотку термозахистом",
+  "stator_winding": "мідь",
+  "mechanical_seal": "кераміка/графіт",
+  "insulation_class": "F",
+  "protection_class": "IPX4",
+
+  "gross_weight_kg": 18.4,
+
+  "solid_particles_max_mm": 0.2,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "тільки для чистої води без абразивовмісних домішок: піску, глини, вапна тощо",
+  "usage": "подача чистої води з колодязів, свердловин або ємностей, побутове водопостачання, полив саду чи городу, автоматична подача води з невеликими резервуарами при використанні керуючої автоматики",
+  "limitations": "тільки для чистої води; не підходить для брудної води, каналізаційних стоків, хімічних рідин та води з твердими частинками понад 0.2 мм; потребує правильного монтажу зовнішнього ежектора",
+
+  "warranty_months": 24,
+  "product_url": "https://techbaza.ua/ua/p1279277177-nasos-tsentrobezhnyj-vneshnim.html?srsltid=AfmBOooNhLkLJD7A4k45fVvBnGn-D5A1v-tg619ah7TCXh3rGIYnkcds"
+},
+  {
+  "article": "775414",
+  "model": "3ACm100S",
+  "full_name": "Насос відцентровий багатоступінчастий 0.6 кВт Hmax 35 м Qmax 100 л/хв нерж LEO 3.0 3ACm100S",
+  "brand": "LEO",
+
+  "main_category": "surface_pump",
+  "main_category_name": "Поверхневий насос",
+
+  "sub_category": "multistage_centrifugal",
+  "sub_category_name": "Відцентровий багатоступінчастий",
+
+  "installation_type": "surface",
+  "installation_type_name": "Поверхневий",
+
+  "source_types": ["well", "tank", "cistern", "pipeline"],
+  "source_type_names": ["колодязь", "ємність", "цистерна", "трубопровід"],
+
+  "applications": ["water_supply", "irrigation", "garden", "dacha", "house", "pressure_boosting"],
+  "application_names": ["водопостачання", "полив", "сад/город", "дача", "будинок", "підвищення тиску"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["dirty_water", "sewage", "chemical", "deep_borehole"],
+  "not_for_names": ["брудна вода", "каналізація", "хімічні рідини", "глибока свердловина"],
+
+  "phase": "1 ~ 220 В",
+  "power_kw": 0.6,
+  "power_w": 600,
+  "power_hp": null,
+  "current_a": 5.0,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 6.0,
+  "q_max_l_min": 100,
+  "q_rated_l_min": null,
+
+  "h_max_m": 35,
+  "h_rated_m": null,
+
+  "suction_depth_m": 8,
+  "max_submersion_depth_m": null,
+
+  "dn1_inch": "1",
+  "dn2_inch": "1",
+
+  "max_liquid_temp_c": 60,
+  "max_ambient_temp_c": 40,
+  "max_pressure_bar": 8,
+
+  "shaft_material": "нержавіюча сталь AISI 304",
+  "impeller_material": "технополімер",
+  "motor_type": "асинхронний, однофазний",
+  "stator_winding": "мідь",
+  "mechanical_seal": null,
+  "insulation_class": "F",
+  "protection_class": "IPX4",
+
+  "gross_weight_kg": 12.5,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "тільки для чистої води без абразивовмісних домішок: піску, глини, вапна тощо",
+  "usage": "циркуляція і подача чистої хімічно неагресивної води та інших рідин, побутове водопостачання, полив, системи підвищення тиску, невеликі системи іригації, циркуляція охолоджувальної води",
+  "limitations": "тільки для чистої води без абразивних домішок; не підходить для брудної води, каналізаційних стоків, хімічно агресивних рідин та глибоких свердловин; максимальна висота всмоктування до 8 м",
+
+  "warranty_months": 24,
+  "product_url": "https://techbaza.ua/ua/p1279277088-nasos-tsentrobezhnyj-mnogostupenchatyj.html?srsltid=AfmBOorW5wbbBWzvEP_zX0QIf7iD1ZaaKtnm3uyCxRKwe9eHhy_JKqeg"
+},
+  {
+  "article": "777126",
+  "model": "4SDm2/28",
+  "full_name": "Відцентровий насос свердловинний 1.5 кВт H 197(158) м Q 55(33) л/хв Ø102 мм DONGYIN 4SDm2/28",
+  "brand": "DONGYIN",
+
+  "main_category": "borehole_pump",
+  "main_category_name": "Свердловинний насос",
+
+  "sub_category": "centrifugal",
+  "sub_category_name": "Відцентровий",
+
+  "installation_type": "submersible",
+  "installation_type_name": "Занурювальний",
+
+  "source_types": ["borehole", "well"],
+  "source_type_names": ["свердловина", "колодязь"],
+
+  "applications": ["water_supply", "irrigation", "garden", "dacha", "house"],
+  "application_names": ["водопостачання", "полив", "сад/город", "дача", "будинок"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["dirty_water", "sewage", "chemical"],
+  "not_for_names": ["брудна вода", "каналізація", "хімічні рідини"],
+
+  "phase": "1 ~ 220-240 В",
+  "power_kw": 1.5,
+  "power_w": 1500,
+  "power_hp": null,
+  "current_a": null,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 3.3,
+  "q_max_l_min": 55,
+  "q_rated_l_min": 33,
+
+  "h_max_m": 197,
+  "h_rated_m": 158,
+
+  "suction_depth_m": null,
+  "max_submersion_depth_m": 60,
+
+  "borehole_diameter_min_mm": 120,
+  "borehole_diameter_max_mm": null,
+  "pump_diameter_mm": 102,
+
+  "dn1_inch": null,
+  "dn2_inch": null,
+
+  "cable_length_m": 1.5,
+
+  "max_liquid_temp_c": 35,
+  "max_ambient_temp_c": null,
+  "max_pressure_bar": null,
+
+  "shaft_material": "нержавіюча сталь",
+  "impeller_material": "технополімер",
+  "motor_type": "асинхронний, маслонаповнений, з вбудованою в обмотку термозахистом",
+  "stator_winding": "мідь",
+  "mechanical_seal": "кераміка/графіт",
+  "insulation_class": "F",
+  "protection_class": "IP68",
+
+  "abrasive_particles_limit": "не більше 0.25% завислих абразивовмісних домішок",
+  "min_borehole_diameter_mm": 120,
+  "gross_weight_kg": null,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "чиста вода з вмістом абразивовмісних домішок не більше 0.25%",
+  "usage": "подача чистої води зі свердловин і резервуарів, побутове водопостачання, полив зрошувальних систем, автоматична подача води з невеликими резервуарами при використанні керуючої автоматики",
+  "limitations": "не підходить для брудної води, каналізаційних стоків, хімічних рідин та води з великою кількістю піску, глини або інших домішок; глибина занурення під дзеркало води до 60 м; рекомендований діаметр свердловини від 120 мм",
+
+  "warranty_months": 24,
+  "product_url": "https://techbaza.ua/ua/p1279252465-nasos-tsentrobezhnyj-skvazhinnyj.html"
+},
+  {
+  "article": "778332",
+  "model": "4SKmw150M",
+  "full_name": "Насос вихровий 1.1 кВт H 98(39) м Q 45(30) л/хв Ø96 мм 10 м кабелю WETRON 4SKmw150M",
+  "brand": "Wetron",
+
+  "main_category": "borehole_pump",
+  "main_category_name": "Свердловинний насос",
+
+  "sub_category": "vortex",
+  "sub_category_name": "Вихровий",
+
+  "installation_type": "submersible",
+  "installation_type_name": "Занурювальний",
+
+  "source_types": ["borehole", "well"],
+  "source_type_names": ["свердловина", "колодязь"],
+
+  "applications": ["water_supply", "irrigation", "garden", "dacha", "house"],
+  "application_names": ["водопостачання", "полив", "сад/город", "дача", "будинок"],
+
+  "water_quality": "slightly_dirty",
+  "water_quality_name": "вода без домішок або з невеликим вмістом абразиву",
+
+  "not_for": ["sewage", "dirty_water_with_large_particles", "chemical"],
+  "not_for_names": ["каналізація", "брудна вода з великими частинками", "хімічні рідини"],
+
+  "phase": "1 ~ 220 В",
+  "power_kw": 1.1,
+  "power_w": 1100,
+  "power_hp": null,
+  "current_a": 7.2,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 2.7,
+  "q_max_l_min": 45,
+  "q_rated_l_min": 30,
+
+  "h_max_m": 98,
+  "h_rated_m": 39,
+
+  "suction_depth_m": null,
+  "max_submersion_depth_m": 60,
+
+  "borehole_diameter_min_mm": 120,
+  "borehole_diameter_max_mm": 150,
+  "pump_diameter_mm": 96,
+
+  "dn1_inch": null,
+  "dn2_inch": "1",
+
+  "cable_length_m": 10,
+  "hose_length_m": 10,
+
+  "max_liquid_temp_c": 35,
+  "max_ambient_temp_c": 35,
+  "max_pressure_bar": null,
+
+  "shaft_material": "нержавіюча сталь AISI 201",
+  "impeller_material": "латунь",
+  "motor_type": "занурювальний електродвигун",
+  "stator_winding": "холоднокатана сталь",
+  "mechanical_seal": "торцеве в електродвигуні",
+  "insulation_class": "B",
+  "protection_class": "IP68",
+
+  "solid_particles_max_mm": 0.2,
+  "max_rpm": 2900,
+
+  "gross_weight_kg": 13.91,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "вода без домішок або вода, що містить абразивні домішки до 0.2 мм",
+  "usage": "подача води зі свердловин і колодязів, побутове водопостачання, полив, водопостачання будинку або дачі за умови відповідності потрібного напору та продуктивності",
+  "limitations": "не підходить для каналізаційних стоків, хімічних рідин, брудної води з великими частинками та сильно забрудненої води; максимальна глибина занурення під дзеркало води до 60 м; рекомендований діаметр свердловини від 120 до 150 мм",
+
+  "warranty_months": 12,
+  "product_url": "https://techbaza.ua/ua/p1426338136-nasos-vihrevoj-11kvt.html?srsltid=AfmBOopeU5uYkSeI62UYUtA0UqaBv-9kULDcbHUJ5-MfNpc2u9dvbZPg"
+},
+  {
+  "article": "774011",
+  "model": "GPD20-4T/130",
+  "full_name": "Насос циркуляційний AQUATICA з термодатчиком 65 Вт Hmax 4 м Qmax 63 л/хв Ø1\" 130 мм + гайки Ø3/4\"",
+  "brand": "Aquatica",
+
+  "main_category": "circulation_pump",
+  "main_category_name": "Циркуляційний насос",
+
+  "sub_category": "heating_with_thermostat",
+  "sub_category_name": "Циркуляційний з термодатчиком",
+
+  "installation_type": "inline",
+  "installation_type_name": "Вбудований у трубопровід",
+
+  "source_types": ["heating", "pipeline"],
+  "source_type_names": ["система опалення", "трубопровід"],
+
+  "applications": ["heating", "hot_water_circulation", "air_conditioning"],
+  "application_names": ["опалення", "циркуляція гарячої води", "кондиціонування"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["well", "borehole", "irrigation", "dirty_water", "sewage", "chemical"],
+  "not_for_names": ["колодязь", "свердловина", "полив", "брудна вода", "каналізація", "хімічні рідини"],
+
+  "phase": "1 ~ 220-240 В",
+  "power_kw": 0.065,
+  "power_w": 65,
+  "power_hp": null,
+  "current_a": null,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 3.78,
+  "q_max_l_min": 63,
+  "q_rated_l_min": null,
+
+  "h_max_m": 4,
+  "h_rated_m": null,
+
+  "suction_depth_m": null,
+  "max_submersion_depth_m": null,
+
+  "dn1_inch": null,
+  "dn2_inch": "1",
+  "adapter_diameter_inch": "3/4",
+  "installation_length_mm": 130,
+
+  "max_liquid_temp_c": 110,
+  "max_ambient_temp_c": 40,
+  "max_pressure_bar": 10,
+
+  "shaft_material": "кераміка",
+  "impeller_material": "технополімер",
+  "motor_type": "асинхронний, безшумний",
+  "stator_winding": "мідь",
+  "mechanical_seal": null,
+  "insulation_class": "H",
+  "protection_class": "IP44",
+
+  "gross_weight_kg": 2.596,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "тільки для чистої води без абразивовмісних домішок: піску, глини, вапна тощо",
+  "usage": "циркуляція води в системах опалення, кондиціонування повітря та гарячого водопостачання; підходить для систем із термостатичним керуванням, має режими роботи 'тепла підлога' і 'опалення'",
+  "limitations": "не підходить для колодязів, свердловин, поливу, відкачування води, брудної води, каналізаційних стоків та хімічних рідин; використовується тільки в трубопровідних системах циркуляції чистої води",
+
+  "warranty_months": 18,
+  "product_url": "https://techbaza.ua/ua/p1279269826-nasos-tsirkulyatsionnyj-termodatchikom.html?srsltid=AfmBOoqkeDsMnCqHyACQZS7J871ibeURNaZ4-Ex70Hs4pqo1BZUiX6O_"
+},
+  {
+  "article": "773432",
+  "model": "AQUATICA 773432",
+  "full_name": "Каналізаційний насос 0.75 кВт Hmax 12 м Qmax 225 л/хв з ножем AQUATICA",
+  "brand": "Aquatica",
+
+  "main_category": "sewage_pump",
+  "main_category_name": "Каналізаційний насос",
+
+  "sub_category": "sewage_with_cutting_knife",
+  "sub_category_name": "Каналізаційний насос з ножем",
+
+  "installation_type": "submersible",
+  "installation_type_name": "Занурювальний",
+
+  "source_types": ["sewage", "basement", "tank"],
+  "source_type_names": ["каналізація", "підвал", "резервуар"],
+
+  "applications": ["sewage", "drainage"],
+  "application_names": ["каналізація", "відкачування забруднених стоків"],
+
+  "water_quality": "sewage",
+  "water_quality_name": "каналізаційні та забруднені стоки",
+
+  "not_for": ["clean_water_supply", "drinking_water", "borehole", "well", "heating", "pool"],
+  "not_for_names": ["питне водопостачання", "питна вода", "свердловина", "колодязь", "опалення", "басейн"],
+
+  "phase": "1 ~ 230 В ±10%",
+  "power_kw": 0.75,
+  "power_w": 750,
+  "power_hp": null,
+  "current_a": 5.2,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 13.5,
+  "q_max_l_min": 225,
+  "q_rated_l_min": null,
+
+  "h_max_m": 12,
+  "h_rated_m": null,
+
+  "suction_depth_m": null,
+  "max_submersion_depth_m": 5,
+
+  "dn1_inch": null,
+  "dn2_inch": "2",
+
+  "cable_length_m": 7,
+
+  "max_liquid_temp_c": 40,
+  "max_ambient_temp_c": null,
+  "max_pressure_bar": null,
+
+  "shaft_material": "нержавіюча сталь AISI 304",
+  "impeller_material": "чавун",
+  "motor_type": "асинхронний, закритого типу, з вбудованою в обмотку термозахистом",
+  "stator_winding": "мідь",
+  "mechanical_seal": "кераміка/графіт",
+  "insulation_class": "B",
+  "protection_class": "IP68",
+
+  "housing_material": "чавун",
+  "outlet_material": "чавун",
+  "cutting_knife": true,
+  "float_switch": true,
+
+  "solid_particles_max_mm": 35,
+
+  "gross_weight_kg": 22.26,
+  "net_weight_kg": 21.12,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "забруднені рідини та каналізаційні стоки з твердими частинками до 35 мм",
+  "usage": "відкачування забруднених рідин, каналізаційних і дренажних стоків, відведення дощових стоків із підвалів, гаражів і водовідведення із затоплених ділянок; підходить для стоків, які можуть містити сторонні побутові предмети, завдяки ножу",
+  "limitations": "не підходить для питної води, свердловин, колодязів, систем опалення, басейнів та перекачування хімічно агресивних рідин; максимальна глибина занурення під дзеркало води до 5 м",
+
+  "warranty_months": 18,
+  "product_url": "https://techbaza.ua/ua/p1279252484-nasos-kanalizatsionnyj-075kvt.html"
+},
+  {
+  "article": "772221",
+  "model": "LEO 772221",
+  "full_name": "Насос для басейну 0.55 кВт Hmax 10 м Qmax 300 л/хв LEO",
+  "brand": "LEO",
+
+  "main_category": "pool_pump",
+  "main_category_name": "Насос для басейну",
+
+  "sub_category": "pool_and_fountain",
+  "sub_category_name": "Для басейнів, ставків і фонтанів",
+
+  "installation_type": "surface",
+  "installation_type_name": "Поверхневий",
+
+  "source_types": ["pool", "pond", "fountain"],
+  "source_type_names": ["басейн", "ставок", "фонтан"],
+
+  "applications": ["pool", "water_circulation", "fountain"],
+  "application_names": ["басейн", "циркуляція води", "фонтан"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["well", "borehole", "water_supply", "irrigation", "dirty_water", "sewage", "chemical", "heating"],
+  "not_for_names": ["колодязь", "свердловина", "водопостачання будинку", "полив", "брудна вода", "каналізація", "хімічні рідини", "опалення"],
+
+  "phase": "1 ~ 220 В",
+  "power_kw": 0.55,
+  "power_w": 550,
+  "power_hp": null,
+  "current_a": 3.0,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 18.0,
+  "q_max_l_min": 300,
+  "q_rated_l_min": null,
+
+  "h_max_m": 10,
+  "h_rated_m": null,
+
+  "suction_depth_m": 3.5,
+  "max_submersion_depth_m": null,
+
+  "dn1_inch": "2 1/2",
+  "dn2_inch": "2 1/2",
+
+  "cable_length_m": 1.5,
+
+  "max_liquid_temp_c": 35,
+  "max_ambient_temp_c": 40,
+  "max_pressure_bar": null,
+
+  "shaft_material": "нержавіюча сталь AISI 304",
+  "impeller_material": "технополімер",
+  "motor_type": "асинхронний, закритого типу, повітряного охолодження, з вбудованою в обмотку термозахистом",
+  "stator_winding": "мідь",
+  "mechanical_seal": "кераміка/графіт",
+  "insulation_class": "B",
+  "protection_class": "IPX5",
+
+  "housing_material": "високоміцний технополімер",
+
+  "solid_particles_max_mm": 0.2,
+
+  "gross_weight_kg": 9.9,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "тільки для чистої води без абразивних домішок: піску, глини, вапна тощо",
+  "usage": "циркуляція чистої води в басейнах, ставках і фонтанах; підходить для систем фільтрації та циркуляції води за умови відповідності потрібної подачі та напору",
+  "limitations": "не підходить для свердловин, колодязів, побутового водопостачання, поливу, брудної води, каналізаційних стоків, хімічно агресивних рідин та води з твердими частинками понад 0.2 мм; максимальна висота всмоктування до 3.5 м",
+
+  "warranty_months": 12,
+  "product_url": "https://techbaza.ua/ua/p1279251463-nasos-dlya-bassejna.html"
+},
+  {
+  "article": "773236",
+  "model": "QDX10-16-0.75A",
+  "full_name": "Насос дренажний 0.75 кВт Hmax 16 м Qmax 280 л/хв Aquatica",
+  "brand": "Aquatica",
+
+  "main_category": "drainage_pump",
+  "main_category_name": "Дренажний насос",
+
+  "sub_category": "slightly_dirty_water",
+  "sub_category_name": "Для чистої та слабко забрудненої води",
+
+  "installation_type": "submersible",
+  "installation_type_name": "Занурювальний",
+
+  "source_types": ["basement", "well", "tank", "pond", "reservoir"],
+  "source_type_names": ["підвал", "колодязь", "резервуар", "водойма", "відкрита водойма"],
+
+  "applications": ["drainage", "irrigation", "garden", "water_transfer"],
+  "application_names": ["відкачування води", "полив", "сад/город", "перекачування води"],
+
+  "water_quality": "slightly_dirty",
+  "water_quality_name": "чиста або слабко забруднена вода",
+
+  "not_for": ["sewage", "dirty_water_with_large_particles", "drinking_water", "borehole", "heating", "chemical"],
+  "not_for_names": ["каналізація", "брудна вода з великими частинками", "питна вода", "свердловина", "опалення", "хімічні рідини"],
+
+  "phase": "1 ~ 220 В",
+  "power_kw": 0.75,
+  "power_w": 750,
+  "power_hp": null,
+  "current_a": null,
+  "frequency_hz": 50,
+
+  "q_max_m3_h": 15.0,
+  "q_max_l_min": 280,
+  "q_rated_l_min": null,
+
+  "h_max_m": 16,
+  "h_rated_m": null,
+
+  "suction_depth_m": null,
+  "max_submersion_depth_m": 5,
+
+  "dn1_inch": null,
+  "dn2_inch": "2",
+  "outlet_diameter_mm": 50,
+
+  "cable_length_m": 10,
+
+  "max_liquid_temp_c": 40,
+  "max_ambient_temp_c": null,
+  "max_pressure_bar": null,
+
+  "shaft_material": "нержавіюча сталь AISI 304",
+  "impeller_material": "чавун",
+  "diffuser_material": "латунь",
+  "housing_material": "чавун з антикорозійною обробкою",
+  "motor_type": "асинхронний, з вбудованою в обмотку термозахистом",
+  "stator_winding": "мідь",
+  "mechanical_seal": null,
+  "insulation_class": "B",
+  "protection_class": "IP68",
+
+  "float_switch": true,
+  "dry_run_protection": true,
+
+  "solid_particles_max_mm": null,
+  "pollution_type": "слабке забруднення",
+
+  "min_well_size_mm": "550x550",
+
+  "gross_weight_kg": null,
+  "net_weight_kg": 14.25,
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "тільки для чистої води без абразивних домішок: піску, глини, вапна тощо; допускається слабке забруднення",
+  "usage": "перекачування чистої або слабко забрудненої води, подача води з відкритих водойм, відкачування води з підвальних приміщень, погребів, колодязів і резервуарів, системи зрошення та поливу низького тиску",
+  "limitations": "не підходить для каналізаційних стоків, фекальних вод, сильно забрудненої води з великими частинками, питного водопостачання, свердловин, систем опалення та хімічно агресивних рідин; максимальна глибина занурення до 5 м",
+
+  "warranty_months": 18,
+  "product_url": "https://techbaza.ua/ua/p2819104337-nasos-drenazhnyj-075kvt.html"
+},
+  {
+  "article": "772512",
+  "model": "LEO 772512",
+  "full_name": "Мотопомпа 6.5 к.с. Hmax 55 м Qmax 30 м³/год 4-тактна LEO",
+  "brand": "LEO",
+
+  "main_category": "motor_pump",
+  "main_category_name": "Мотопомпа",
+
+  "sub_category": "clean_water_motor_pump",
+  "sub_category_name": "Мотопомпа для чистої води",
+
+  "installation_type": "mobile",
+  "installation_type_name": "Мобільна / переносна",
+
+  "source_types": ["pond", "tank", "cistern", "well", "reservoir"],
+  "source_type_names": ["водойма", "ємність", "цистерна", "колодязь", "резервуар"],
+
+  "applications": ["irrigation", "garden", "water_transfer", "drainage", "agriculture", "construction"],
+  "application_names": ["полив", "сад/город", "перекачування води", "відкачування води", "сільське господарство", "будівництво"],
+
+  "water_quality": "clean",
+  "water_quality_name": "чиста вода",
+
+  "not_for": ["sewage", "dirty_water_with_large_particles", "chemical", "borehole", "heating", "pool_circulation"],
+  "not_for_names": ["каналізація", "брудна вода з великими частинками", "хімічні рідини", "свердловина", "опалення", "циркуляція басейну"],
+
+  "phase": null,
+  "power_kw": 4.75,
+  "power_w": 4750,
+  "power_hp": 6.5,
+  "current_a": null,
+  "frequency_hz": null,
+
+  "engine_type": "одноциліндровий чотиритактний бензиновий двигун повітряного охолодження",
+  "engine_displacement_cm3": 196,
+  "start_system": "ручна",
+  "fuel_type": "бензин",
+  "fuel_tank_l": 2.8,
+  "fuel_consumption_g_kwh": 395,
+  "max_rpm": 3600,
+
+  "q_max_m3_h": 30,
+  "q_max_l_min": 500,
+  "q_rated_l_min": null,
+
+  "h_max_m": 55,
+  "h_rated_m": null,
+
+  "suction_depth_m": 8,
+  "max_submersion_depth_m": null,
+
+  "dn1_inch": "2",
+  "dn2_inch": "2",
+  "dn2_mm": "2x38 + 1x50",
+
+  "max_liquid_temp_c": 40,
+  "max_ambient_temp_c": 40,
+  "max_pressure_bar": null,
+
+  "housing_material": "алюмінієвий сплав",
+  "impeller_material": "алюмінієвий сплав",
+  "diffuser_material": "чавун з антикорозійною обробкою",
+
+  "solid_particles_max_mm": 5,
+
+  "gross_weight_kg": 26.1,
+
+  "package_dimensions_mm": "463x398x406",
+
+  "included_items": [
+    "ключ свічний",
+    "ущільнююча прокладка",
+    "затиск / хомут",
+    "з'єднувальний патрубок",
+    "фільтр грубої очистки"
+  ],
+
+  "head_by_flow_l_min": {},
+
+  "water_type_text": "тільки для чистої води без абразивних домішок: піску, глини, вапна тощо; допускаються частинки до 5 мм",
+  "usage": "автономне перекачування чистої води без електромережі, полив у сільському господарстві, подача великих обсягів води, осушення сільськогосподарських ділянок, відкачування дренажних вод, подача води для гасіння пожеж, відкачування води з колодязів під час робіт у міських та комунальних умовах",
+  "limitations": "не підходить для каналізаційних стоків, хімічних рідин, морської води та сильно забрудненої води з великими частинками; використовувати тільки на відкритому повітрі або в добре провітрюваному місці; максимальна висота всмоктування до 8 м",
+
+  "warranty_months": 12,
+  "product_url": "https://techbaza.ua/ua/p1279252390-motopompa-hmax-qmax.html"
+}
+]

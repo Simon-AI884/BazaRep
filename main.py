@@ -31,6 +31,7 @@ async def on_startup():
 
 
 async def main():
+    # Асинхронний запуск без блокування потоків
     await on_startup()
     await dp.start_polling(bot)
 
