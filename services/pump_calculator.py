@@ -124,11 +124,19 @@ def calculate_irrigation_flow(
         required_flow_m3_h=required_flow_m3_h,
     )
 
+def get_table_flow_with_reserve(flow_m3_h: float) -> float:
+    available_flows = sorted(HEAD_LOSS_TABLE_BAR_PER_100M.keys())
 
-def get_nearest_table_flow(flow_m3_h: float) -> float:
-    return min(
-        HEAD_LOSS_TABLE_BAR_PER_100M.keys(),
-        key=lambda table_flow: abs(table_flow - flow_m3_h),
+    for table_flow in available_flows:
+        if table_flow >= flow_m3_h:
+            return table_flow
+
+    max_table_flow = available_flows[-1]
+
+    raise ValueError(
+        f"Витрата {flow_m3_h:.2f} м³/год більша, ніж максимальна витрата в таблиці "
+        f"{max_table_flow:.2f} м³/год. "
+        f"Оберіть більший діаметр труби або поділіть систему поливу на декілька зон."
     )
 
 
@@ -148,7 +156,7 @@ def calculate_pump_requirement(
     if pipe_diameter_mm not in (20, 25, 32, 40, 50, 63, 75):
         raise ValueError("Непідтримуваний діаметр труби")
 
-    nearest_table_flow_m3_h = get_nearest_table_flow(flow_m3_h)
+    nearest_table_flow_m3_h = get_table_flow_with_reserve(flow_m3_h)
     pipe_loss_bar_per_100m = HEAD_LOSS_TABLE_BAR_PER_100M[
         nearest_table_flow_m3_h
     ].get(pipe_diameter_mm)
